@@ -1,24 +1,52 @@
 "use client";
 
-import { Button } from "@heroui/react";
+import NavBar from "./components/ui/NavBar";
+import ListingCard from "./components/ui/ListingCard";
+import CityCard from "./components/ui/CityCard";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center p-24 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start text-center">
-        <h1 className="text-4xl font-bold tracking-tight">HeroUI has been configured!</h1>
-        <p className="text-lg opacity-80 max-w-lg">
-          You are ready to start building your application with modern and beautiful components.
-        </p>
-        <div className="flex gap-4 items-center flex-col sm:flex-row mx-auto mt-4">
-          <Button color="primary" variant="shadow">
-            Primary Button
-          </Button>
-          <Button color="secondary" variant="flat">
-            Secondary Button
-          </Button>
-        </div>
-      </main>
-    </div>
+    <>
+      <div className="flex flex-col p-4 border-b-1">
+        <NavBar />
+      </div>
+      <div className="flex min-h-screen flex-col items-center justify-center p-8 font-[family-name:var(--font-geist-sans)]">
+        <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start text-center">
+          <h2>Best cities for coffee</h2>
+          <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <CityCard name={`Sydney`} />
+            <CityCard name={`Melbourne`} />
+            <CityCard name={`San Francisco`} />
+          </section>
+          <h2>Great cafes from around the world</h2>
+          <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <ListingCard />
+            <ListingCard />
+            <ListingCard />
+            <ListingCard />
+            <ListingCard />
+            <ListingCard />
+          </section>
+          <h2>Explore the Best coffee Neighbourhood from around the world</h2>
+          <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <ListingCard />
+            <ListingCard />
+            <ListingCard />
+            <ListingCard />
+            <ListingCard />
+            <ListingCard />
+          </section>
+          <h2>Explore Roasters</h2>
+          <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <ListingCard />
+            <ListingCard />
+            <ListingCard />
+            <ListingCard />
+            <ListingCard />
+            <ListingCard />
+          </section>
+        </main>
+      </div>
+    </>
   );
 }
