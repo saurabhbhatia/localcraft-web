@@ -22,12 +22,11 @@ export default function RoastersCard({
           {name || "Frontend Radio"}
         </h4>
       </CardHeader>
-      <CardBody className="overflow-visible py-2">
+      <CardBody className="overflow-visible py-2 flex flex-col items-center">
         <Image
           alt={name || "Card background"}
-          className="object-cover"
+          className="object-cover w-full"
           src={image || "https://heroui.com/images/hero-card-complete.jpeg"}
-          width={270}
         />
       </CardBody>
     </Card>

@@ -22,12 +22,11 @@ export default function CityCard({ name }: CityCardProps) {
       <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
         <h4 className="font-bold text-large">{name}</h4>
       </CardHeader>
-      <CardBody className="overflow-visible pt-2 px-2">
+      <CardBody className="overflow-visible pt-2 px-2 flex flex-col items-center">
         <Image
           alt="Card background"
-          className="object-cover border border-solid"
+          className="object-cover border border-solid w-full"
           src={cityImage(name)}
-          width={250}
         />
       </CardBody>
     </Card>
