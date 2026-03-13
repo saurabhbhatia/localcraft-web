@@ -1,11 +1,9 @@
 "use client";
 
-import NavBar from "./components/ui/NavBar";
 import HeroSection from "./components/ui/HeroSection";
 import CityCard from "./components/ui/CityCard";
 import ListingCard from "./components/ui/ListingCard";
 import RoastersCard from "./components/ui/RoastersCard";
-import Footer from "./components/ui/Footer";
 
 // Dummy Data
 import cafes from "../dummyData/cafes";
@@ -16,9 +14,6 @@ import NeighbourhoodCard from "./components/ui/NeighbourhoodCard";
 export default function Home() {
   return (
     <>
-      <div className="flex flex-col p-4 border-b-1">
-        <NavBar />
-      </div>
       <div className="flex flex-col items-center justify-center p-8 font-[family-name:var(--font-geist-sans)]">
         <main className="flex flex-col gap-16 items-center w-full max-w-7xl">
           <HeroSection />
@@ -72,7 +67,6 @@ export default function Home() {
           </div>
         </main>
       </div>
-      <Footer />
     </>
   );
 }

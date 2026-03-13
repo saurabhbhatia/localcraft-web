@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Figtree, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
+import NavBar from "./components/ui/NavBar";
+import Footer from "./components/ui/Footer";
+import "leaflet/dist/leaflet.css";
 
 
 const figtreeSans = Figtree({
@@ -33,7 +36,11 @@ export default function RootLayout({
         className={`${figtreeSans.variable} ${instrumentSerif.variable} antialiased`}
       >
         <Providers>
+          <div className="flex flex-col p-4 border-b-1">
+            <NavBar />
+          </div>
           {children}
+          <Footer />
         </Providers>
       </body>
     </html>

@@ -1,7 +1,7 @@
 const cafes = [
   {
     name: "Single O",
-    url: "https://localcraft.app/cafes/single-o/",
+    url: "localhost:3000/cafes/single-o/",
     image:
       "https://localcraft.app/wp-content/uploads/2024/05/single-o-banner.jpeg",
     suburb: "Surry Hills",
@@ -9,14 +9,14 @@ const cafes = [
   },
   {
     name: "Paramount Coffee Project",
-    url: "https://localcraft.app/cafes/paramount-coffee-project/",
+    url: "localhost:3000/cafes/paramount-coffee-project/",
     image: "https://localcraft.app/wp-content/uploads/2024/05/pcpimg1.jpeg",
     suburb: "Surry Hills",
     city: "Sydney",
   },
   {
     name: "Edition Coffee Roasters",
-    url: "https://localcraft.app/cafes/edition-coffee-roasters-haymarket/",
+    url: "localhost:3000/cafes/edition-coffee-roasters-haymarket/",
     image:
       "https://localcraft.app/wp-content/uploads/2024/06/Edition-Coffee-Roasters.jpg",
     suburb: "Haymarket",
