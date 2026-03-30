@@ -1,7 +1,7 @@
 const cafes = [
   {
     name: "Single O",
-    url: "localhost:3000/cafes/single-o/",
+    url: "/cafes/single-o/",
     image:
       "https://localcraft.app/wp-content/uploads/2024/05/single-o-banner.jpeg",
     suburb: "Surry Hills",

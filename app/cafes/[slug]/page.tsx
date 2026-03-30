@@ -6,6 +6,7 @@ import Link from "next/link";
 import { IoGlobe, IoLogoFacebook, IoLogoInstagram, IoStar } from "react-icons/io5";
 import singleo from "../../../dummyData/singleo";
 import cafes from "../../../dummyData/cafes";
+import NearbyCafes from "@/app/components/ui/NearbyCafes";
 
 // Dynamic import for Map to avoid SSR issues with Leaflet
 const Map = dynamic(() => import("@/app/components/ui/Map"), {
@@ -148,6 +149,12 @@ export default function Cafe() {
           </div>
         </div>
       </div>
+
+      {/* Nearby Cafes Section */}
+      <NearbyCafes 
+        title={`Cafes Around ${cafeData.name}`} 
+        nearbyCafes={cafeData.nearby_cafes_sydney} 
+      />
     </div>
   );
 }
