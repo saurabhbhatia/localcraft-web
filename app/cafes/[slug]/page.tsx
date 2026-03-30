@@ -7,6 +7,7 @@ import { IoGlobe, IoLogoFacebook, IoLogoInstagram, IoStar } from "react-icons/io
 import singleo from "../../../dummyData/singleo";
 import cafes from "../../../dummyData/cafes";
 import NearbyCafes from "@/app/components/ui/NearbyCafes";
+import Breadcrumbs from "@/app/components/ui/Breadcrumbs";
 
 // Dynamic import for Map to avoid SSR issues with Leaflet
 const Map = dynamic(() => import("@/app/components/ui/Map"), {
@@ -34,6 +35,16 @@ export default function Cafe() {
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
+      <Breadcrumbs
+        crumbs={[
+          {
+            label: cafeData.city,
+            href: `/city/${cafeData.city.toLowerCase().replace(/\s+/g, "-")}`,
+          },
+          { label: cafeData.name },
+        ]}
+        className="mb-8"
+      />
       {/* Title Section */}
       <div className="flex items-center gap-4 w-full border-b pb-6 mb-4">
         <div className="relative w-16 h-16 rounded-full overflow-hidden flex-shrink-0 bg-gray-100">

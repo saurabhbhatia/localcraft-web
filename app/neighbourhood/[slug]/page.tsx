@@ -7,8 +7,9 @@ import ListingCard from "@/app/components/ui/ListingCard";
 import neighbourhoods from "@/dummyData/neighbourhoods";
 import type { BoundingBox } from "@/app/components/ui/CityMap";
 import type { CafeListing } from "@/dummyData/cities";
-import { IoLocationSharp, IoCafe, IoChevronForward } from "react-icons/io5";
+import { IoLocationSharp, IoCafe } from "react-icons/io5";
 import Link from "next/link";
+import Breadcrumbs from "@/app/components/ui/Breadcrumbs";
 
 // Dynamic import for CityMap to avoid SSR issues with Leaflet
 const CityMap = dynamic(() => import("@/app/components/ui/CityMap"), {
@@ -102,14 +103,7 @@ export default function NeighbourhoodPage() {
         <div className="absolute top-0 left-0 right-0 z-[1000] pointer-events-none">
           <div className="max-w-7xl mx-auto px-6 pt-6">
             <div className="pointer-events-auto inline-flex flex-col gap-1 bg-white/90 backdrop-blur-md rounded-2xl px-6 py-4 shadow-lg border border-stone-200/60">
-              {/* Breadcrumb */}
-              <nav className="flex items-center gap-1.5 text-xs text-stone-400">
-                <Link href="/" className="hover:text-stone-600 transition-colors">
-                  Home
-                </Link>
-                <IoChevronForward className="w-3 h-3" />
-                <span className="text-stone-600 font-medium">{neighbourhood.name}</span>
-              </nav>
+              <Breadcrumbs crumbs={[{ label: neighbourhood.name }]} />
               <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 tracking-tight">
                 {neighbourhood.name}
               </h1>
