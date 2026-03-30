@@ -3,6 +3,7 @@
 import Image from "next/image";
 import dynamic from "next/dynamic";
 import { useParams } from "next/navigation";
+import { useState, useEffect } from "react";
 import { IoGlobe, IoLogoFacebook, IoLogoInstagram } from "react-icons/io5";
 import roasters from "@/dummyData/roasters";
 import cafes from "@/dummyData/cafes";
@@ -23,9 +24,16 @@ export default function RoasterPage() {
   const params = useParams();
   const slug = params.slug as string;
 
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setMounted(true), 0);
+    return () => clearTimeout(timer);
+  }, []);
+
   // Find the roaster from the slug, or just use a default one
   const roasterData = roasters.find(
-    (r) => r.name.toLowerCase().replace(/\s+/g, "-") === slug
+    (r) => r.name.toLowerCase().replace(/\s+/g, "-") === slug,
   ) || {
     name: slug
       .split("-")
@@ -43,11 +51,41 @@ export default function RoasterPage() {
   };
 
   const address = `${roasterData.name} Roastery, ${roasterData.city}`;
-  const hours = "8:00am - 4:00pm";
   const location: [number, number] = [-33.8823, 151.2104]; // Default coordinates
 
   // Mock "Cafes Using This Roaster" using our cafes list
   const usingCafes = cafes.slice(0, 3);
+
+  if (!mounted) {
+    return (
+      <div className="max-w-7xl mx-auto px-4 py-8">
+        <div className="h-8 w-48 bg-stone-100 rounded animate-pulse mb-8" />
+        <div className="flex items-center gap-4 border-b pb-6 mb-4">
+          <div className="w-16 h-16 rounded-full bg-stone-100 animate-pulse flex-shrink-0" />
+          <div className="h-10 w-64 bg-stone-100 rounded animate-pulse" />
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mt-8">
+          <div className="md:col-span-1">
+            <div className="h-[300px] w-full rounded-xl bg-stone-100 animate-pulse" />
+          </div>
+          <div className="md:col-span-2 space-y-4">
+            <div className="h-6 w-48 bg-stone-100 rounded animate-pulse" />
+            <div className="h-4 w-full bg-stone-100 rounded animate-pulse" />
+            <div className="h-4 w-full bg-stone-100 rounded animate-pulse" />
+            <div className="h-4 w-3/4 bg-stone-100 rounded animate-pulse" />
+          </div>
+        </div>
+        <div className="mt-16">
+          <div className="h-8 w-64 bg-stone-100 rounded animate-pulse mb-8" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[1, 2, 3].map((i) => (
+              <div key={i} className="h-64 w-full bg-stone-100 rounded-xl animate-pulse" />
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
@@ -96,14 +134,6 @@ export default function RoasterPage() {
                 <p className="font-medium text-gray-900">Address</p>
                 <p>{address}</p>
               </div>
-              <div>
-                <p className="font-medium text-gray-900">City</p>
-                <p>{roasterData.city}</p>
-              </div>
-              <div>
-                <p className="font-medium text-gray-900">Opening Hours</p>
-                <p>{hours}</p>
-              </div>
             </div>
           </div>
         </div>
@@ -124,8 +154,8 @@ export default function RoasterPage() {
               <p>
                 With a focus on sustainability and ethical sourcing,{" "}
                 {roasterData.name} works closely with farmers to ensure fair
-                practices. Their commitment to the craft has made them a favorite
-                among coffee enthusiasts and specialty cafes alike.
+                practices. Their commitment to the craft has made them a
+                favorite among coffee enthusiasts and specialty cafes alike.
               </p>
             </div>
           </div>
